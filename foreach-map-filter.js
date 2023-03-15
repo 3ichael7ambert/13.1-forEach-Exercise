@@ -163,42 +163,45 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 
-function vowelCount(str){
-let newStr=str.toLowerCase();
-    let obj={};
-    let aCount= str.match(/[a]/gi).length;     ////  Found /[aeiou]/gi on MDN Mozilla Dev Network, don't understand why gi needs to be there
-    let eCount= str.match(/[e]/gi).length;      //  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
-    let iCount= str.match(/[i]/gi).length;
-    let oCount= str.match(/[o]/gi).length;
-    let uCount= str.match(/[u]/gi).length;
-    obj["a"]=aCount;
-    obj["e"]=eCount;
-    obj["i"]=iCount;
-    obj["o"]=oCount;
-    obj["u"]=uCount;
-    return obj;
+// function vowelCount(str){
+// let newStr=str.toLowerCase();
+//     let obj={};
+//     let aCount= str.match(/[a]/gi).length;     ////  Found /[aeiou]/gi on MDN Mozilla Dev Network, don't understand why gi needs to be there
+//     let eCount= str.match(/[e]/gi).length;      //  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match
+//     let iCount= str.match(/[i]/gi).length;
+//     let oCount= str.match(/[o]/gi).length;
+//     let uCount= str.match(/[u]/gi).length;
+//     obj["i"]=iCount;
+//     obj["a"]=aCount;
+//     obj["e"]=eCount;
+//     obj["o"]=oCount;
+//     obj["u"]=uCount;
+//     return obj;
 
-}
+// }
 
+
+
+// My code above worked as requested. However, it did not pass Jasmine tests.
 
 // ///
-// function vowelCount(str) {
-//     let splitArr = str.split("");
-//     let obj = {};
-//     const vowels = "aeiou";
+function vowelCount(str) {
+    let splitArr = str.split("");
+    let obj = {};
+    const vowels = "aeiou";
   
-//     splitArr.forEach(function(letter) {
-//       let lowerCasedLetter = letter.toLowerCase()
-//       if (vowels.indexOf(lowerCasedLetter) !== -1) {
-//         if (obj[lowerCasedLetter]) {
-//           obj[lowerCasedLetter]++;
-//         } else {
-//           obj[lowerCasedLetter] = 1;
-//         }
-//       }
-//     });
-//     return obj;
-//   }
+    splitArr.forEach(function(letter) {
+      let lowerCasedLetter = letter.toLowerCase()
+      if (vowels.indexOf(lowerCasedLetter) !== -1) {
+        if (obj[lowerCasedLetter]) {
+          obj[lowerCasedLetter]++;
+        } else {
+          obj[lowerCasedLetter] = 1;
+        }
+      }
+    });
+    return obj;
+  }
 
 /////
 
@@ -334,7 +337,7 @@ Examples:
 function find(arr, searchValue) {
     return arr.filter (function(val) {        /// return arr.filter (function(val,index) {
         return val===searchValue;                  ///return val[index]===searchValue;
-    });    ///solution has })[0];  here....  I assume so it returns undefined? instead of []
+    })[0];    ///solution has })[0];  here....  I assume so it returns undefined? instead of []  //edit: added [0] for Jasmine tests
 }
 
 
@@ -354,7 +357,8 @@ Examples:
 function findInObj(arr, key, searchValue) {
     return arr.filter ( function(val) {
         return val[key]===searchValue;
-    }); //// solution shows })[0];    this only shows Tim and not Colt... Which would show the first found, instead of all found
+    })[0]; //// solution shows })[0];    this only shows Tim and not Colt... Which would show the first found, instead of all found
+    ///EDIT:  Added [0] to pass the Jasmine tests
 
 }
 
@@ -440,12 +444,11 @@ Examples:
 
 ////SOLUTION////
 function doubleOddNumbers(arr) {
-    return arr .filter(function(val) {
-        if (val % 2 !== 0) {
-            arr.map(function(val) {
-                return val * 2;
-              });
-        }
+    return arr
+      .filter(function(val) {
+        return val % 2 !== 0;
+      })
+      .map(function(val) {
+        return val * 2;
       });
-  
     }
