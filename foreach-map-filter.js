@@ -53,6 +53,7 @@ function onlyEvenValues(arr){
 }
 
 
+
 ////
 // function onlyEvenValues(arr) {
 //     let newArr = [];
@@ -92,6 +93,8 @@ function showFirstAndLast(arr){
     }
     return newArr;
 }
+
+
 
 
 ////////
